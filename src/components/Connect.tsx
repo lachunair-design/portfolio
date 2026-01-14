@@ -16,251 +16,135 @@ export default function Connect() {
     _gotcha: '',
   })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setFormStatus('submitting')
-
-    if (formData._gotcha) {
-      setFormStatus('success')
-      return
-    }
+    if (formData._gotcha) { setFormStatus('success'); return }
 
     try {
       const response = await fetch('https://formspree.io/f/xpwzgvqa', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
       })
-
       if (response.ok) {
         setFormStatus('success')
         setFormData({ name: '', email: '', message: '', _gotcha: '' })
-      } else {
-        setFormStatus('error')
-      }
-    } catch {
-      setFormStatus('error')
-    }
+      } else { setFormStatus('error') }
+    } catch { setFormStatus('error') }
   }
 
   return (
-    <section id="connect" ref={ref} className="section-padding bg-cream">
-      <div className="container-editorial max-w-3xl">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-10"
-        >
-          <div className="burgundy-line mb-6" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-black mb-4">
-            Let's Work Together
-          </h2>
-          <p className="text-lg text-black/60 font-body leading-relaxed max-w-xl">
-            Currently building GUTSY and Current State. Also helping founders
-            with operations stuff. Open to interesting projects, smart
-            collaborations, and good conversations.
-          </p>
-        </motion.div>
-
-        {/* Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white border border-black/10 p-6 md:p-10"
-        >
-          {formStatus === 'success' ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-10"
-            >
-              <div className="w-14 h-14 bg-burgundy/10 flex items-center justify-center mx-auto mb-5">
-                <svg
-                  className="w-7 h-7 text-burgundy"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-serif font-bold text-black mb-2">
-                Thanks!
-              </h3>
-              <p className="text-black/60 font-body">
-                I'll get back to you soon.
+    <section id="connect" ref={ref} className="py-24 bg-cream border-t border-black/10">
+      <div className="container-editorial max-w-5xl">
+        <div className="grid lg:grid-cols-12 gap-16">
+          
+          {/* Left: The Brief */}
+          <motion.div 
+            className="lg:col-span-5"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+          >
+            <span className="text-burgundy font-serif italic text-xl mb-4 block">Correspondence</span>
+            <h2 className="text-5xl md:text-6xl font-serif font-bold tracking-tighter text-black mb-8">
+              Let's build <br />something.
+            </h2>
+            <div className="space-y-6 text-black/60 font-body text-lg leading-relaxed">
+              <p>
+                Currently split between scaling <span className="text-black font-bold">GUTSY</span> and 
+                refining <span className="text-black font-bold">Current State</span>.
               </p>
-            </motion.div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <input
-                type="text"
-                name="_gotcha"
-                value={formData._gotcha}
-                onChange={handleChange}
-                style={{ display: 'none' }}
-                tabIndex={-1}
-                autoComplete="off"
-              />
+              <p>
+                I help founders with strategic operations and geek out on AI implementation. 
+                If you have a project that requires both logic and chaos, reach out.
+              </p>
+            </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-body font-medium text-black mb-2"
-                  >
-                    Name <span className="text-burgundy">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
+            {/* Asymmetrical Social Links */}
+            <div className="mt-12 flex flex-col gap-4 border-t border-black/5 pt-8">
+               <a href="https://www.linkedin.com/in/lakshmicnair" className="font-serif font-bold text-lg hover:text-burgundy transition-colors flex justify-between w-full max-w-xs border-b border-black/5 pb-2">
+                 LinkedIn <span>→</span>
+               </a>
+               <a href="mailto:lachunair@gmail.com" className="font-serif font-bold text-lg hover:text-burgundy transition-colors flex justify-between w-full max-w-xs">
+                 Direct Email <span>→</span>
+               </a>
+            </div>
+          </motion.div>
+
+          {/* Right: The Ledger Form */}
+          <motion.div 
+            className="lg:col-span-7 bg-white p-8 md:p-12 border border-black/5 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.02)]"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+          >
+            {formStatus === 'success' ? (
+              <div className="py-20 text-center">
+                <h3 className="text-3xl font-serif font-bold mb-4 italic">Sent.</h3>
+                <p className="text-black/50 font-body">I'll get back to you amidst the chaos.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <input type="text" name="_gotcha" value={formData._gotcha} onChange={handleChange} className="hidden" />
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="border-b border-black/10 focus-within:border-burgundy transition-colors pb-2">
+                    <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/30 mb-1 block">Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full bg-transparent font-serif text-xl outline-none placeholder:text-black/10"
+                      placeholder="e.g. Alan Turing"
+                    />
+                  </div>
+                  <div className="border-b border-black/10 focus-within:border-burgundy transition-colors pb-2">
+                    <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/30 mb-1 block">Email Address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full bg-transparent font-serif text-xl outline-none placeholder:text-black/10"
+                      placeholder="name@company.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="border-b border-black/10 focus-within:border-burgundy transition-colors pb-2">
+                  <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/30 mb-1 block">The Project / The Inquiry</label>
+                  <textarea
+                    name="message"
                     required
-                    value={formData.name}
+                    rows={4}
+                    value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-cream/50 border border-black/10 font-body text-black placeholder-black/30 focus:outline-none focus:border-burgundy transition-colors duration-300"
-                    placeholder="Your name"
+                    className="w-full bg-transparent font-serif text-xl outline-none placeholder:text-black/10 resize-none"
+                    placeholder="Tell me what you're working on..."
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-body font-medium text-black mb-2"
-                  >
-                    Email <span className="text-burgundy">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-cream/50 border border-black/10 font-body text-black placeholder-black/30 focus:outline-none focus:border-burgundy transition-colors duration-300"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-body font-medium text-black mb-2"
+                <button
+                  type="submit"
+                  disabled={formStatus === 'submitting'}
+                  className="w-full bg-black text-cream py-6 font-serif font-black text-2xl hover:bg-burgundy transition-all duration-500 disabled:opacity-50"
                 >
-                  Message <span className="text-burgundy">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 bg-cream/50 border border-black/10 font-body text-black placeholder-black/30 focus:outline-none focus:border-burgundy transition-colors duration-300 resize-none"
-                  placeholder="Tell me what you're working on..."
-                />
-              </div>
-
-              {formStatus === 'error' && (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-red-600 font-body text-sm"
-                >
-                  Something went wrong. Please try again or email me directly.
-                </motion.p>
-              )}
-
-              <button
-                type="submit"
-                disabled={formStatus === 'submitting'}
-                className={`w-full btn-primary ${
-                  formStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
-              >
-                {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-          )}
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 pt-10 border-t border-black/10"
-        >
-          <p className="text-xs font-body text-black/40 uppercase tracking-wider mb-5 text-center">
-            Connect with me
-          </p>
-          <div className="flex justify-center gap-8 flex-wrap">
-            <a
-              href="https://www.linkedin.com/in/lakshmicnair"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="editorial-link flex items-center gap-2 text-black/70 font-body text-sm hover:text-burgundy transition-colors"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-              LinkedIn
-            </a>
-            <a
-              href="https://www.instagram.com/lakshmiirl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="editorial-link flex items-center gap-2 text-black/70 font-body text-sm hover:text-burgundy transition-colors"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-              @lakshmiirl
-            </a>
-            <a
-              href="mailto:lachunair@gmail.com"
-              className="editorial-link flex items-center gap-2 text-black/70 font-body text-sm hover:text-burgundy transition-colors"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              Email
-            </a>
-          </div>
-        </motion.div>
+                  {formStatus === 'submitting' ? 'Dispatching...' : 'Dispatch Message'}
+                </button>
+                
+                {formStatus === 'error' && (
+                  <p className="text-burgundy font-serif italic text-sm">Error in the system. Try emailing directly.</p>
+                )}
+              </form>
+            )}
+          </motion.div>
+        </div>
       </div>
     </section>
   )
