@@ -89,17 +89,56 @@ export default function Building() {
             </div>
           </div>
 
+          {/* Right Column: Placeholder Journey Visual (INLINE SVG) */}
           <div className="lg:col-span-5 bg-[#F9F7F2] p-8 md:p-12 flex items-center justify-center relative">
             <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-black/20" />
             <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-black/20" />
-            <div className="relative w-full aspect-[3/5] md:aspect-[4/5]">
-               <Image src="/gutsy-timeline.png" alt="GUTSY Journey" fill className="object-contain" priority />
+            
+            <div className="relative w-full aspect-[3/5] md:aspect-[4/5] border border-black/5 bg-white p-8 flex flex-col justify-between group">
+              <div className="absolute top-4 right-4 text-[10px] font-bold tracking-widest text-black/20 group-hover:text-burgundy transition-colors">
+                PROT-01
+              </div>
+              
+              {/* Inline SVG Placeholder for Journey */}
+              <div className="h-full w-full flex flex-col justify-center space-y-12 py-10">
+                <div className="relative">
+                   <svg viewBox="0 0 100 240" fill="none" stroke="currentColor" strokeWidth="1" className="text-black/10">
+                      <path d="M50 0 V240" strokeDasharray="4 4" />
+                      {/* Visualizing the 5 stages as architectural nodes */}
+                      {[20, 70, 120, 170, 220].map((y, idx) => (
+                        <g key={y}>
+                           <circle 
+                            cx="50" cy={y} r="4" 
+                            className={idx < 3 ? "fill-black" : idx === 3 ? "fill-burgundy" : "fill-white stroke-black/20"} 
+                           />
+                           <rect 
+                            x="65" y={y-10} width="30" height="20" 
+                            className="stroke-black/5" fill="transparent"
+                           />
+                        </g>
+                      ))}
+                   </svg>
+                   <div className="absolute inset-0 flex flex-col justify-between py-10 items-end pr-4">
+                      <span className="text-[8px] uppercase tracking-widest text-black/40">Biology</span>
+                      <span className="text-[8px] uppercase tracking-widest text-black/40">Sourcing</span>
+                      <span className="text-[8px] uppercase tracking-widest text-black/40">Stability</span>
+                      <span className="text-[8px] uppercase tracking-widest text-burgundy font-bold">Scaling</span>
+                      <span className="text-[8px] uppercase tracking-widest text-black/20">Launch</span>
+                   </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <h4 className="font-serif italic text-xl text-black leading-tight">Founder's Journey</h4>
+                <div className="w-8 h-px bg-burgundy mx-auto mt-2" />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Feature: Current State Blueprint */}
         <div className="grid lg:grid-cols-12 gap-0 border border-cream/10 bg-[#0F0F0F] text-cream overflow-hidden">
+          {/* Left Column: The Wireframe/Visual */}
           <div className="lg:col-span-5 p-8 md:p-12 flex items-center justify-center relative bg-burgundy/[0.03] border-r border-cream/10">
              <div className="absolute inset-0 opacity-[0.06] pointer-events-none" 
                   style={{ backgroundImage: 'radial-gradient(circle, #FFF 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -134,6 +173,7 @@ export default function Building() {
              </div>
           </div>
 
+          {/* Right Column: The "Project Specs" */}
           <div className="lg:col-span-7 p-8 md:p-16 flex flex-col justify-between">
             <div>
               <span className="text-burgundy font-serif italic text-xl mb-4 block">Productivity</span>
