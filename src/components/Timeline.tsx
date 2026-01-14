@@ -21,7 +21,7 @@ const timelineData: TimelineItem[] = [
     description:
       'Built systems, wrote code, realized I cared more about the "why" than the "how".',
     pullQuote: "Also realized I'm not patient enough to debug for 8 hours straight.",
-    image: '/software-engineer.jpg',
+    image: 'public/software-engineer.jpg',
     logo: '/software-engineer.jpg',
     logoAlt: null,
   },
