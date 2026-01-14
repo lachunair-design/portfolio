@@ -109,7 +109,7 @@ export default function Hero() {
             >
               <div className="relative aspect-[4/5] max-w-md mx-auto lg:max-w-none img-zoom">
                 <Image
-                  src="/Lakshmi_personal_brandi...-023.jpg"
+                  src="/Hero-image.jpg"
                   alt="Lakshmi Nair"
                   fill
                   className="object-cover img-editorial"
