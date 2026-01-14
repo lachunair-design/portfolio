@@ -56,7 +56,7 @@ export default function Building() {
                 <div className="flex items-center gap-4 mb-6">
                   <div className="relative w-12 h-12">
                     <Image
-                      src="/Gutsy logomark copyright.jpg"
+                      src="/Gutsy-logomark.jpg"
                       alt="GUTSY"
                       fill
                       className="object-contain"
@@ -166,7 +166,7 @@ export default function Building() {
               <div className="order-2 lg:order-1">
                 <div className="relative aspect-[4/3] img-zoom">
                   <Image
-                    src="/Current State"
+                    src="/Current-State.png"
                     alt="Current State app mockup"
                     fill
                     className="object-contain"
