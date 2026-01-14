@@ -4,6 +4,14 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
 
+const gutsyTimeline = [
+  { label: 'Problem', status: 'complete' },
+  { label: 'Research', status: 'complete' },
+  { label: 'Kitchen Experiments', status: 'complete' },
+  { label: 'Building GUTSY', status: 'current' },
+  { label: 'Launch Q1 2026', status: 'upcoming' },
+]
+
 export default function Building() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
@@ -40,9 +48,30 @@ export default function Building() {
                 Gut health for the <span className="italic text-burgundy">disciplined.</span>
               </h3>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-12 text-black/80 font-body text-lg leading-relaxed">
-                <p>The industry is flooded with influencer-led miracle cures. We’re building the opposite: high-grade, science-first supplements with zero proprietary blends.</p>
-                <p>Currently in stability testing. Every ingredient is sourced for bioavailability, not profit margins. Launching Q1 2026.</p>
+              <div className="grid md:grid-cols-2 gap-12 mb-12">
+                <div className="space-y-6 font-body text-lg text-black/80 leading-relaxed">
+                   <p>The industry is flooded with influencer-led miracle cures. We’re building the opposite: high-grade, science-first supplements with zero proprietary blends.</p>
+                   <p>Currently in stability testing. Every ingredient is sourced for bioavailability, not profit margins. Launching Q1 2026.</p>
+                </div>
+
+                {/* Integrated Vertical Timeline */}
+                <div className="relative pl-6 border-l border-black/10 space-y-6">
+                   <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/30 block mb-4">Development Log</span>
+                   {gutsyTimeline.map((step, i) => (
+                     <div key={step.label} className="relative flex items-center gap-4">
+                        <div className={`w-2 h-2 rounded-full border ${
+                          step.status === 'complete' ? 'bg-black border-black' : 
+                          step.status === 'current' ? 'bg-burgundy border-burgundy animate-pulse' : 
+                          'bg-transparent border-black/20'
+                        }`} />
+                        <span className={`font-serif text-sm ${
+                          step.status === 'upcoming' ? 'text-black/30' : 'text-black'
+                        } ${step.status === 'current' ? 'font-bold' : ''}`}>
+                          {step.label}
+                        </span>
+                     </div>
+                   ))}
+                </div>
               </div>
             </div>
 
@@ -71,9 +100,7 @@ export default function Building() {
 
         {/* Feature: Current State Blueprint */}
         <div className="grid lg:grid-cols-12 gap-0 border border-cream/10 bg-[#0F0F0F] text-cream overflow-hidden">
-          {/* Left Column: The Wireframe/Visual */}
           <div className="lg:col-span-5 p-8 md:p-12 flex items-center justify-center relative bg-burgundy/[0.03] border-r border-cream/10">
-             {/* Architectural Grid Overlay - Increased Opacity for Visibility */}
              <div className="absolute inset-0 opacity-[0.06] pointer-events-none" 
                   style={{ backgroundImage: 'radial-gradient(circle, #FFF 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
              
@@ -83,7 +110,6 @@ export default function Building() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center h-full text-center space-y-8 relative z-10">
-                  {/* Fixed Logo: Inline SVG ensures visibility */}
                   <div className="w-16 h-16 text-cream opacity-90 group-hover:scale-110 group-hover:text-burgundy transition-all duration-700">
                      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                         <path d="M50 15 L85 85 Q50 95 15 85 Z" />
@@ -108,7 +134,6 @@ export default function Building() {
              </div>
           </div>
 
-          {/* Right Column: The "Project Specs" */}
           <div className="lg:col-span-7 p-8 md:p-16 flex flex-col justify-between">
             <div>
               <span className="text-burgundy font-serif italic text-xl mb-4 block">Productivity</span>
