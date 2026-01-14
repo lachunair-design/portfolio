@@ -141,7 +141,7 @@ export default function Building() {
               </div>
 
               {/* Image */}
-              <div className="relative aspect-[4/5] img-zoom card-tilt">
+              <div className="relative aspect-[3/4] img-zoom card-tilt">
                 <Image
                   src="/GUTSY-PRODUCT.png"
                   alt="GUTSY product research"
