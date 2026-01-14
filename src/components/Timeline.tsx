@@ -97,33 +97,38 @@ export default function Timeline() {
                 {/* Timeline dot */}
                 <div className="hidden lg:flex absolute left-8 -translate-x-1/2 w-4 h-4 bg-burgundy rounded-full z-10" />
 
-                {/* Image */}
-                <div
-                  className={`lg:col-span-5 ${
-                    index % 2 === 0 ? 'lg:col-start-2' : 'lg:col-start-8'
-                  }`}
-                >
-                  <div className="relative aspect-[4/3] img-zoom card-tilt">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover img-editorial"
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                    />
-                    {item.logo && (
-                      <div className="absolute top-4 right-4 bg-cream/90 backdrop-blur-sm p-2">
-                        <Image
-                          src={item.logo}
-                          alt={item.logoAlt || ''}
-                          width={60}
-                          height={24}
-                          className="h-6 w-auto object-contain opacity-70"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </div>
+              {/* Image / Logo */}
+{(item.image || item.logo) && (
+  <div
+    className={`lg:col-span-5 ${
+      index % 2 === 0 ? 'lg:col-start-2' : 'lg:col-start-8'
+    }`}
+  >
+    <div className="relative aspect-[4/3] bg-black/5 flex items-center justify-center overflow-hidden">
+      {/* Big image (only if present) */}
+      {item.image && (
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          className="object-cover img-editorial"
+          sizes="(max-width: 768px) 100vw, 40vw"
+        />
+      )}
+
+      {/* Logo-only mode (when image is null) */}
+      {!item.image && item.logo && (
+        <Image
+          src={item.logo}
+          alt={item.logoAlt || item.title}
+          width={220}
+          height={100}
+          className="object-contain opacity-80"
+        />
+      )}
+    </div>
+  </div>
+)}
 
                 {/* Content */}
                 <div
