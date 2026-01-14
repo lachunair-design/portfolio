@@ -4,14 +4,6 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
 
-const gutsyTimeline = [
-  { label: 'Problem', status: 'complete' },
-  { label: 'Research', status: 'complete' },
-  { label: 'Kitchen Experiments', status: 'complete' },
-  { label: 'Building GUTSY', status: 'current' },
-  { label: 'Launch Q1 2026', status: 'upcoming' },
-]
-
 export default function Building() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
@@ -48,30 +40,9 @@ export default function Building() {
                 Gut health for the <span className="italic text-burgundy">disciplined.</span>
               </h3>
 
-              <div className="grid md:grid-cols-2 gap-12 mb-12">
-                <div className="space-y-6 font-body text-lg text-black/80 leading-relaxed">
-                   <p>The industry is flooded with influencer-led miracle cures. We’re building the opposite: high-grade, science-first supplements with zero proprietary blends.</p>
-                   <p>Currently in stability testing. Every ingredient is sourced for bioavailability, not profit margins. Launching Q1 2026.</p>
-                </div>
-
-                {/* Integrated Vertical Timeline */}
-                <div className="relative pl-6 border-l border-black/10 space-y-6">
-                   <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/30 block mb-4">Development Log</span>
-                   {gutsyTimeline.map((step, i) => (
-                     <div key={step.label} className="relative flex items-center gap-4">
-                        <div className={`w-2 h-2 rounded-full border ${
-                          step.status === 'complete' ? 'bg-black border-black' : 
-                          step.status === 'current' ? 'bg-burgundy border-burgundy animate-pulse' : 
-                          'bg-transparent border-black/20'
-                        }`} />
-                        <span className={`font-serif text-sm ${
-                          step.status === 'upcoming' ? 'text-black/30' : 'text-black'
-                        } ${step.status === 'current' ? 'font-bold' : ''}`}>
-                          {step.label}
-                        </span>
-                     </div>
-                   ))}
-                </div>
+              <div className="max-w-xl space-y-6 font-body text-lg text-black/80 leading-relaxed mb-12">
+                <p>The industry is flooded with influencer-led miracle cures. We’re building the opposite: high-grade, science-first supplements with zero proprietary blends.</p>
+                <p>Currently in stability testing. Every ingredient is sourced for bioavailability, not profit margins. Launching Q1 2026.</p>
               </div>
             </div>
 
@@ -89,48 +60,53 @@ export default function Building() {
             </div>
           </div>
 
-          {/* Right Column: Placeholder Journey Visual (INLINE SVG) */}
-          <div className="lg:col-span-5 bg-[#F9F7F2] p-8 md:p-12 flex items-center justify-center relative">
-            <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-black/20" />
-            <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-black/20" />
+          {/* Right Column: The Master Index Journey */}
+          <div className="lg:col-span-5 bg-[#F9F7F2] p-8 md:p-16 flex flex-col justify-center relative">
+            {/* Subtle Blueprint Grid Background */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                 style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
             
-            <div className="relative w-full aspect-[3/5] md:aspect-[4/5] border border-black/5 bg-white p-8 flex flex-col justify-between group">
-              <div className="absolute top-4 right-4 text-[10px] font-bold tracking-widest text-black/20 group-hover:text-burgundy transition-colors">
-                PROT-01
-              </div>
-              
-              {/* Inline SVG Placeholder for Journey */}
-              <div className="h-full w-full flex flex-col justify-center space-y-12 py-10">
-                <div className="relative">
-                   <svg viewBox="0 0 100 240" fill="none" stroke="currentColor" strokeWidth="1" className="text-black/10">
-                      <path d="M50 0 V240" strokeDasharray="4 4" />
-                      {/* Visualizing the 5 stages as architectural nodes */}
-                      {[20, 70, 120, 170, 220].map((y, idx) => (
-                        <g key={y}>
-                           <circle 
-                            cx="50" cy={y} r="4" 
-                            className={idx < 3 ? "fill-black" : idx === 3 ? "fill-burgundy" : "fill-white stroke-black/20"} 
-                           />
-                           <rect 
-                            x="65" y={y-10} width="30" height="20" 
-                            className="stroke-black/5" fill="transparent"
-                           />
-                        </g>
-                      ))}
-                   </svg>
-                   <div className="absolute inset-0 flex flex-col justify-between py-10 items-end pr-4">
-                      <span className="text-[8px] uppercase tracking-widest text-black/40">Biology</span>
-                      <span className="text-[8px] uppercase tracking-widest text-black/40">Sourcing</span>
-                      <span className="text-[8px] uppercase tracking-widest text-black/40">Stability</span>
-                      <span className="text-[8px] uppercase tracking-widest text-burgundy font-bold">Scaling</span>
-                      <span className="text-[8px] uppercase tracking-widest text-black/20">Launch</span>
-                   </div>
-                </div>
+            <div className="relative z-10 space-y-12">
+              <div className="border-b border-black/10 pb-4">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-black/30 font-bold">Log: 2024-2026</span>
               </div>
 
-              <div className="text-center">
-                <h4 className="font-serif italic text-xl text-black leading-tight">Founder's Journey</h4>
-                <div className="w-8 h-px bg-burgundy mx-auto mt-2" />
+              <div className="space-y-10">
+                {[
+                  { step: '01', label: 'The Problem', detail: 'Chronic Bloat & Fatigue', status: 'done' },
+                  { step: '02', label: 'Research Phase', detail: 'Bioavailability Audits', status: 'done' },
+                  { step: '03', label: 'Kitchen Lab', detail: 'Stability Testing v.4', status: 'done' },
+                  { step: '04', label: 'Building GUTSY', detail: 'Current Focus: Scaling', status: 'active' },
+                  { step: '05', label: 'Market Launch', detail: 'Dubai Q1 2026', status: 'next' },
+                ].map((item) => (
+                  <div key={item.step} className="flex items-start gap-6 group">
+                    <span className={`font-serif italic text-xl ${item.status === 'active' ? 'text-burgundy' : 'text-black/20'}`}>
+                      {item.step}
+                    </span>
+                    <div className="flex flex-col">
+                      <span className={`font-serif text-2xl tracking-tight leading-none transition-colors ${
+                        item.status === 'next' ? 'text-black/20' : 'text-black'
+                      } ${item.status === 'active' ? 'font-bold underline decoration-burgundy decoration-1 underline-offset-[12px]' : ''}`}>
+                        {item.label}
+                      </span>
+                      <span className={`text-[10px] uppercase tracking-widest mt-3 font-bold transition-colors ${
+                        item.status === 'active' ? 'text-burgundy' : 'text-black/40'
+                      }`}>
+                        {item.detail}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Hand-annotated Footnote */}
+              <div className="pt-12 flex justify-end">
+                 <div className="max-w-[140px] text-right">
+                    <p className="font-serif italic text-xs text-black/40 leading-relaxed">
+                      *Every stage documented. <br />No proprietary blends.
+                    </p>
+                    <div className="w-8 h-px bg-burgundy ml-auto mt-2" />
+                 </div>
               </div>
             </div>
           </div>
