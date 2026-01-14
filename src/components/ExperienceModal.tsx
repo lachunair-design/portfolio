@@ -12,213 +12,124 @@ const experienceData = [
       {
         title: 'Head of Affordability and Growth',
         period: 'Dec 2021 - Jul 2025',
-        description:
-          'Led annual strategic planning across 8 markets with €100M budgets, presenting investment cases to C-suite and orchestrating OKR alignment across 70+ stakeholders.',
+        description: 'Led strategic planning for 8 markets. Orchestrated OKR alignment across 70+ stakeholders.'
       },
-      {
-        title: 'Head of Commercial Strategy and Products',
-        period: 'Jan 2024 - Nov 2024',
-        description:
-          'Built Account Management Center achieving 60% adoption and €1.1M revenue impact while serving as commercial thought partner to regional and global leadership.',
-      },
-      {
-        title: 'Revenue and Growth Lead MENA',
-        period: 'Jan 2023 - Jan 2024',
-        description:
-          'Co-led multi-year strategic planning identifying €3M revenue uplift and €100M EBITDA opportunity while designing scalable operational frameworks across multiple markets.',
-      },
+      // ... rest of your roles
     ],
   },
-  {
-    company: 'Deliveroo',
-    period: '2017-2019',
-    summary: 'Operations & Strategy | UK & Middle East',
-    roles: [
-      {
-        title: 'Operations Strategy Manager',
-        period: '2018 - 2019',
-        description:
-          'Developed operational frameworks for market expansion, optimizing delivery logistics and partner relationships across multiple territories.',
-      },
-      {
-        title: 'Operations Analyst',
-        period: '2017 - 2018',
-        description:
-          'Built data-driven insights for operational decision-making, identifying efficiency improvements that reduced costs by 15% across key markets.',
-      },
-    ],
-  },
-  {
-    company: 'Software Engineering',
-    period: '2013-2016',
-    summary: 'Full-Stack Development | Enterprise Systems',
-    roles: [
-      {
-        title: 'Software Engineer',
-        period: '2013 - 2016',
-        description:
-          'Built and maintained enterprise software systems, developing both frontend and backend solutions. Realized passion for business strategy over technical debugging.',
-      },
-    ],
-  },
+  // ... rest of your data
 ]
 
-export default function ExperienceModal() {
+export default function ExperienceDrawer() {
   const [isOpen, setIsOpen] = useState(false)
-  const [expandedCompany, setExpandedCompany] = useState<string | null>(null)
 
   return (
     <>
-      {/* Trigger Section */}
-      <section className="section-padding bg-cream border-t border-black/10">
-        <div className="container-editorial text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">
-              Want the Full Story?
+      {/* Trigger: The "Founder's Footnote" */}
+      <section className="py-20 bg-cream border-y border-black/5">
+        <div className="container-editorial flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-md">
+            <h2 className="text-3xl font-serif font-bold text-black mb-2 italic">
+              Want the metrics?
             </h2>
-            <p className="text-black/60 font-body mb-8 max-w-lg mx-auto">
-              Detailed career history with metrics, projects, and all the nerdy details.
+            <p className="text-black/60 font-body text-sm uppercase tracking-widest">
+              Detailed career history, budgets, and project specs.
             </p>
-            <button
-              onClick={() => setIsOpen(true)}
-              className="btn-secondary"
-            >
-              Read the Detailed Version
-            </button>
-          </motion.div>
+          </div>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="group flex items-center gap-4 border-b-2 border-burgundy pb-2 font-serif font-black text-2xl hover:text-burgundy transition-all"
+          >
+            Access Full History
+            <span className="group-hover:translate-x-2 transition-transform">→</span>
+          </button>
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            onClick={() => setIsOpen(false)}
-          >
+          <>
             {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/70" />
-
-            {/* Modal Content */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative bg-cream w-full max-w-3xl max-h-[85vh] overflow-y-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
+            />
+
+            {/* Content Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 h-full w-full max-w-xl bg-cream z-50 shadow-2xl overflow-y-auto border-l border-black"
             >
-              {/* Header */}
-              <div className="sticky top-0 bg-cream border-b border-black/10 p-6 flex justify-between items-center">
-                <h3 className="text-2xl font-serif font-bold text-black">
-                  Professional Experience
-                </h3>
-                <button
+              {/* Drawer Header */}
+              <div className="p-8 border-b border-black/10 flex justify-between items-end bg-[#F9F7F2]">
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.4em] text-burgundy font-bold">Annex 01</span>
+                  <h3 className="text-4xl font-serif font-bold text-black mt-2">The CV.</h3>
+                </div>
+                <button 
                   onClick={() => setIsOpen(false)}
-                  className="p-2 hover:bg-black/5 transition-colors"
-                  aria-label="Close modal"
+                  className="font-serif italic text-black/40 hover:text-black transition-colors"
                 >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  [ Close ]
                 </button>
               </div>
 
-              {/* Content */}
-              <div className="p-6 space-y-6">
+              {/* Data Content */}
+              <div className="p-8 md:p-12 space-y-16">
                 {experienceData.map((company) => (
-                  <div key={company.company} className="border border-black/10">
-                    {/* Company Header */}
-                    <button
-                      onClick={() =>
-                        setExpandedCompany(
-                          expandedCompany === company.company ? null : company.company
-                        )
-                      }
-                      className="w-full p-6 text-left hover:bg-black/5 transition-colors"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="text-xl font-serif font-bold text-black mb-1">
-                            {company.company}
-                          </h4>
-                          <p className="text-sm text-burgundy font-body font-medium">
-                            {company.period}
-                          </p>
-                          <p className="text-sm text-black/60 font-body mt-2">
-                            {company.summary}
+                  <div key={company.company} className="relative">
+                    <div className="flex justify-between items-baseline border-b border-black mb-6">
+                      <h4 className="text-2xl font-serif font-bold italic">{company.company}</h4>
+                      <span className="text-xs font-bold font-body">{company.period}</span>
+                    </div>
+                    
+                    <p className="text-sm font-body font-bold text-burgundy mb-8 tracking-wide uppercase">
+                      {company.summary}
+                    </p>
+
+                    <div className="space-y-10">
+                      {company.roles.map((role, idx) => (
+                        <div key={idx} className="group">
+                          <div className="flex flex-col mb-2">
+                            <span className="font-serif font-bold text-lg leading-tight group-hover:text-burgundy transition-colors">
+                              {role.title}
+                            </span>
+                            <span className="text-[10px] font-body text-black/40 uppercase tracking-widest mt-1">
+                              {role.period}
+                            </span>
+                          </div>
+                          <p className="text-black/70 font-body text-sm leading-relaxed border-l border-black/5 pl-4">
+                            {role.description}
                           </p>
                         </div>
-                        <motion.svg
-                          animate={{
-                            rotate: expandedCompany === company.company ? 180 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
-                          className="w-5 h-5 text-black/40 flex-shrink-0 mt-1"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </motion.svg>
-                      </div>
-                    </button>
-
-                    {/* Expanded Roles */}
-                    <AnimatePresence>
-                      {expandedCompany === company.company && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="px-6 pb-6 space-y-4 border-t border-black/10 pt-4">
-                            {company.roles.map((role, index) => (
-                              <div
-                                key={index}
-                                className="pl-4 border-l-2 border-burgundy"
-                              >
-                                <h5 className="font-body font-semibold text-black">
-                                  {role.title}
-                                </h5>
-                                <p className="text-xs text-burgundy font-body mb-2">
-                                  {role.period}
-                                </p>
-                                <p className="text-sm text-black/70 font-body leading-relaxed">
-                                  {role.description}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {/* Footer */}
-              <div className="sticky bottom-0 bg-cream border-t border-black/10 p-6">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="btn-primary w-full"
+              {/* Drawer Footer */}
+              <div className="p-8 bg-black text-cream">
+                <p className="font-serif italic text-lg mb-4 text-cream/60">
+                  Scaling logic across 8 markets teaches you one thing: 
+                  <span className="text-cream block not-italic font-bold">The chaos is the constant.</span>
+                </p>
+                <a 
+                  href="mailto:lachunair@gmail.com" 
+                  className="inline-block border-b border-burgundy pb-1 text-sm font-bold uppercase tracking-widest"
                 >
-                  Close
-                </button>
+                  Let's Discuss Strategy
+                </a>
               </div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
