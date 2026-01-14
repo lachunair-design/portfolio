@@ -12,7 +12,7 @@ const timelineData = [
       'Built systems, wrote code, realized I cared more about the "why" than the "how".',
     pullQuote: 'Also realized I\'m not patient enough to debug for 8 hours straight.',
     image: '/software-engineer.jpg',
-    logo:  '/software-engineer.jpg',
+    logo:  null,
     logoAlt: null,
   },
   {
@@ -22,7 +22,7 @@ const timelineData = [
       'Dove into operations and strategy. Learned that scaling businesses is just like debugging, except with humans, and they don\'t come with error messages.',
     pullQuote: null,
     image: '/deliveroo-logo.png',
-    logo: '/deliveroo-logo.png',
+    logo: null,
     logoAlt: 'Deliveroo',
   },
   {
@@ -32,7 +32,7 @@ const timelineData = [
       'Managed €100M+ budgets across 8 markets. Presented to C-suite. Orchestrated teams.',
     pullQuote: 'Discovered I\'m good at translating vision into action (and that PowerPoint is a weapon).',
     image: '/talabat-logo.png',
-    logo: '/talabat-logo.png',
+    logo: null,
     logoAlt: 'Talabat',
   },
   {
@@ -42,7 +42,7 @@ const timelineData = [
       'Wanted to experience the founder journey myself. Now I understand why sleep is optional and coffee is a food group.',
     pullQuote: 'Also why every decision feels existential.',
     image: '/Gutsy-logomark.jpg',
-    logo: '/Gutsy-logomark.jpg',
+    logo: null,
     logoAlt: 'GUTSY',
   },
   {
@@ -52,7 +52,7 @@ const timelineData = [
       'Because productivity apps assume we\'re robots. We\'re not. Some days are 10x days. Some days are survival mode.',
     pullQuote: 'The system should adapt.',
     image: '/Current_State.jpg',
-    logo: '/Current_State.jpg',
+    logo: null,
     logoAlt: null,
   },
 ]
