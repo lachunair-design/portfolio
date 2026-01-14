@@ -16,12 +16,12 @@ type TimelineItem = {
 
 const timelineData: TimelineItem[] = [
   {
-    year: '2013-2016',
+    year: '2015-2016',
     title: 'Software Engineer',
     description:
       'Built systems, wrote code, realized I cared more about the "why" than the "how".',
     pullQuote: "Also realized I'm not patient enough to debug for 8 hours straight.",
-    image: null,
+    image: '/software-engineer.jpg',
     logo: '/software-engineer.jpg',
     logoAlt: null,
   },
