@@ -1,155 +1,88 @@
 'use client'
 
-import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-type TimelineItem = {
-  year: string
-  title: string
-  description: string
-  pullQuote?: string | null
-  image?: string | null
-  logo?: string | null
-  logoAlt?: string | null
-}
-
-const timelineData: TimelineItem[] = [
+const chapters = [
   {
-    year: '2015-2016',
+    index: '01',
+    period: 'The Roots',
     title: 'Software Engineer',
-    description:
-      'Built systems, wrote code, realized I cared more about the "why" than the "how".',
-    pullQuote: "Also realized I'm not patient enough to debug for 8 hours straight.",
-    image: 'public/software-engineer.jpg',
-    logo: null,
-    logoAlt: null,
+    text: 'Built systems and realized I cared more about the "why" than the "how". Trading technical debt for human logic.',
+    chaos: 'First realization: Sleep is a variable, not a constant.'
   },
   {
-    year: '2017-2022',
-    title: 'Deliveroo',
-    description:
-      "Dove into operations and strategy. Learned that scaling businesses is just like debugging, except with humans, and they don't come with error messages.",
-    pullQuote: null,
-    image: null,
-    logo: '/deliveroo-logo.png',
-    logoAlt: 'Deliveroo',
+    index: '02',
+    period: 'The Scaling',
+    title: 'Operations & Markets',
+    text: 'Moved from code to humans. Scaled systems across 8 markets. Learned that businesses are just complex algorithms with more variables.',
+    chaos: 'PowerPoint became my primary IDE.'
   },
   {
-    year: '2022-2025',
-    title: 'Talabat',
-    description:
-      'Managed €100M+ budgets across 8 markets. Presented to C-suite. Orchestrated teams.',
-    pullQuote:
-      "Discovered I'm good at translating vision into action (and that PowerPoint is a weapon).",
-    image: null,
-    logo: '/talabat-logo.png',
-    logoAlt: 'Talabat',
-  },
-  {
-    year: '2025-Present',
-    title: 'Founded GUTSY',
-    description:
-      'Wanted to experience the founder journey myself. Now I understand why sleep is optional and coffee is a food group.',
-    pullQuote: 'Also why every decision feels existential.',
-    image: null,
-    logo: '/Gutsy-logomark.jpg',
-    logoAlt: 'GUTSY',
-  },
-  {
-    year: '2025-Present',
-    title: 'Building Current State',
-    description:
-      "Because productivity apps assume we're robots. We're not. Some days are 10x days. Some days are survival mode.",
-    pullQuote: 'The system should adapt.',
-    image: null,
-    logo: '/Current_State.jpg',
-    logoAlt: null,
-  },
+    index: '03',
+    period: 'The Pivot',
+    title: 'AI & Public Building',
+    text: 'Discarded the corporate ladder to geek out about AI and build in public. Obsessed with human performance and biology.',
+    chaos: 'Current status: Welcome to the chaos.'
+  }
 ]
 
 export default function Timeline() {
-  const ref = useRef<HTMLElement | null>(null)
-  const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="experience" ref={ref} className="section-padding bg-cream">
+    <section id="founder" ref={ref} className="py-24 bg-cream text-black border-t border-black/10">
       <div className="container-editorial">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12 md:mb-16"
-        >
-          <div className="burgundy-line mb-6" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-black mb-3">
-            From Code to Strategy
-          </h2>
-          <p className="text-lg text-black/50 font-body italic">(With Detours)</p>
-        </motion.div>
+        <div className="grid lg:grid-cols-12 gap-12">
+          
+          {/* Left: Sticky Title */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
+            <div className="w-12 h-1 bg-burgundy mb-6" />
+            <h2 className="text-5xl font-serif font-bold tracking-tighter mb-4">
+              The Founder <br />Journey.
+            </h2>
+            <p className="font-serif italic text-black/50 text-lg">
+              A brief history of how we got to the chaos.
+            </p>
+          </div>
 
-        {/* Horizontal Timeline */}
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute left-0 right-0 top-6 h-px bg-burgundy/20" />
-
-          <div className="flex gap-6 md:gap-10 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth">
-            {timelineData.map((item, index) => (
-              <motion.article
-                key={`${item.year}-${item.title}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className="snap-start shrink-0 w-[85vw] md:w-[520px] lg:w-[620px]"
+          {/* Right: The Vertical Ledger */}
+          <div className="lg:col-span-8 border-l border-black/10 pl-8 md:pl-16">
+            {chapters.map((chapter, i) => (
+              <motion.div 
+                key={chapter.index}
+                initial={{ opacity: 0, x: 20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: i * 0.2 }}
+                className="mb-24 last:mb-0 relative"
               >
-                {/* Dot */}
-                <div className="hidden md:block w-3 h-3 bg-burgundy rounded-full mb-6" />
-
-                {/* Logo / Image (no background frame) */}
-                {(item.logo || item.image) && (
-                  <div className="flex items-center justify-start py-6">
-                    {item.image ? (
-                      <div className="relative w-full h-[260px] overflow-hidden">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          fill
-                          className="object-cover img-editorial"
-                          sizes="(max-width: 768px) 85vw, 620px"
-                        />
-                      </div>
-                    ) : (
-                      item.logo && (
-                        <Image
-                          src={item.logo}
-                          alt={item.logoAlt || item.title}
-                          width={360}
-                          height={160}
-                          className="h-16 md:h-20 w-auto object-contain opacity-80"
-                        />
-                      )
-                    )}
-                  </div>
-                )}
-
-                {/* Content */}
-                <span className="inline-block text-burgundy font-body text-sm font-semibold uppercase tracking-wider mb-3">
-                  {item.year}
+                {/* Number as a watermark */}
+                <span className="absolute -left-20 md:-left-32 top-0 text-7xl md:text-8xl font-serif font-black text-black/5 opacity-10">
+                  {chapter.index}
                 </span>
 
-                <h3 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">
-                  {item.title}
-                </h3>
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 border-b border-black/5 pb-2">
+                  <h3 className="text-3xl font-serif font-bold">{chapter.title}</h3>
+                  <span className="text-burgundy font-body font-bold text-xs uppercase tracking-widest">
+                    {chapter.period}
+                  </span>
+                </div>
 
-                <p className="text-black/70 font-body text-base leading-relaxed mb-4">
-                  {item.description}
-                </p>
-
-                {item.pullQuote && <p className="pull-quote text-lg">{item.pullQuote}</p>}
-              </motion.article>
+                <div className="grid md:grid-cols-2 gap-8 items-start">
+                  <p className="font-body text-lg text-black/70 leading-relaxed">
+                    {chapter.text}
+                  </p>
+                  <div className="bg-black/5 p-6 border-l-2 border-burgundy">
+                    <p className="font-serif italic text-sm text-black/60">
+                      "{chapter.chaos}"
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
