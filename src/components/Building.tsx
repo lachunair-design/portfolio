@@ -26,8 +26,7 @@ export default function Building() {
         </div>
 
         {/* Feature: GUTSY Broadside */}
-        <div className="grid lg:grid-cols-12 gap-0 border border-cream/10 bg-cream text-black overflow-hidden">
-          
+        <div className="grid lg:grid-cols-12 gap-0 border border-cream/10 bg-cream text-black overflow-hidden mb-24">
           {/* Left Column: The "Article" */}
           <div className="lg:col-span-7 p-8 md:p-16 flex flex-col justify-between border-r border-black/5">
             <div>
@@ -70,45 +69,65 @@ export default function Building() {
 
           {/* Right Column: The "Illustration Gallery" */}
           <div className="lg:col-span-5 bg-[#F9F7F2] p-8 md:p-12 flex items-center justify-center relative">
-            {/* Corner Decorative Elements */}
             <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-black/20" />
             <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-black/20" />
-            
             <div className="relative w-full aspect-[3/5] md:aspect-[4/5]">
-               <Image 
-                src="/gutsy-timeline.png" 
-                alt="The Journey Illustration" 
-                fill 
-                className="object-contain"
-                priority
-               />
+               <Image src="/gutsy-timeline.png" alt="GUTSY Journey" fill className="object-contain" priority />
             </div>
           </div>
         </div>
 
-        {/* Secondary: Current State Section */}
-        <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
-            <div className="p-12 border-l border-burgundy bg-white/5">
-                <span className="text-burgundy font-serif italic mb-2 block text-lg">Productivity</span>
-                <h4 className="text-4xl font-serif font-bold mb-6 text-cream">Current State</h4>
-                <p className="text-cream/60 font-body text-lg mb-8 max-w-sm">
-                    A system for the neurodivergent and multi-hyphenate. It adapts to your daily energy levels, not a rigid 9-5 calendar.
-                </p>
-                <div className="opacity-50 pointer-events-none font-serif italic">
-                    Coming Soon — Beta 2026
+        {/* Feature: Current State Blueprint */}
+        <div className="grid lg:grid-cols-12 gap-0 border border-cream/10 bg-[#0F0F0F] text-cream overflow-hidden">
+          {/* Left Column: The Wireframe/Visual */}
+          <div className="lg:col-span-5 p-8 md:p-12 flex items-center justify-center relative bg-burgundy/[0.03] border-r border-cream/10">
+             {/* Architectural Grid Overlay */}
+             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                  style={{ backgroundImage: 'radial-gradient(circle, #FFF 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+             
+             <div className="relative w-full max-w-[280px] aspect-[9/16] border border-cream/20 bg-black p-6 group">
+                <div className="absolute -top-3 -right-3 px-2 py-1 bg-burgundy text-[10px] font-bold uppercase tracking-widest">
+                  Alpha v.01
                 </div>
+                <div className="flex flex-col items-center justify-center h-full text-center space-y-6">
+                  <div className="w-12 h-12 relative opacity-80 group-hover:scale-110 transition-transform duration-500">
+                    <Image src="/Current-State-Logo.png" alt="Cone Icon" fill className="object-contain grayscale invert" />
+                  </div>
+                  <h4 className="font-serif italic text-xl">Honor your capacity.</h4>
+                  <div className="w-full h-px bg-cream/10" />
+                  <p className="text-[10px] uppercase tracking-widest text-cream/40">Flow without the overwhelm</p>
+                </div>
+             </div>
+          </div>
+
+          {/* Right Column: The "Project Specs" */}
+          <div className="lg:col-span-7 p-8 md:p-16 flex flex-col justify-between">
+            <div>
+              <span className="text-burgundy font-serif italic text-xl mb-4 block">Productivity</span>
+              <h3 className="text-4xl md:text-6xl font-serif font-bold mb-8 leading-[0.9] tracking-tighter">
+                Productivity for <br /><span className="text-burgundy">Actual Humans.</span>
+              </h3>
+              
+              <div className="max-w-xl space-y-6">
+                <p className="font-body text-lg text-cream/70 leading-relaxed">
+                  Most systems assume we are robots. Current State is a productivity framework designed for the neurodivergent and the multi-hyphenate.
+                </p>
+                <p className="font-body text-lg text-cream/70 leading-relaxed">
+                  It swaps rigid calendars for energy-based logic, adapting to your daily capacity rather than fighting against it.
+                </p>
+              </div>
             </div>
-            
-            <div className="relative group overflow-hidden border border-cream/10">
-                <div className="absolute inset-0 bg-burgundy/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                <Image 
-                    src="/Current-State.png" 
-                    alt="Current State" 
-                    width={600} 
-                    height={400} 
-                    className="grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
+
+            <div className="mt-12 flex flex-col md:flex-row items-start md:items-center gap-8">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-burgundy rounded-full animate-pulse" />
+                <span className="font-serif italic text-cream/40">Coming Soon — Beta 2026</span>
+              </div>
+              <button className="text-cream/60 hover:text-burgundy font-body text-sm uppercase tracking-widest border-b border-cream/10 hover:border-burgundy transition-all pb-1">
+                Follow the development chaos
+              </button>
             </div>
+          </div>
         </div>
 
       </div>
