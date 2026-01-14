@@ -16,33 +16,33 @@ const timelineData = [
     logoAlt: null,
   },
   {
-    year: '2017-2019',
+    year: '2017-2022',
     title: 'Deliveroo',
     description:
       'Dove into operations and strategy. Learned that scaling businesses is just like debugging, except with humans, and they don\'t come with error messages.',
     pullQuote: null,
-    image: '/deliveroo-logo.jpg',
+    image: '/deliveroo-logo.png',
     logo: '/deliveroo-logo.svg',
     logoAlt: 'Deliveroo',
   },
   {
-    year: '2020-2024',
+    year: '2022-2025',
     title: 'Talabat',
     description:
       'Managed €100M+ budgets across 8 markets. Presented to C-suite. Orchestrated teams.',
     pullQuote: 'Discovered I\'m good at translating vision into action (and that PowerPoint is a weapon).',
-    image: '/talabat-logo.jpg',
+    image: '/talabat-logo.png',
     logo: '/talabat-logo.svg',
     logoAlt: 'Talabat',
   },
   {
-    year: '2024-Present',
+    year: '2025-Present',
     title: 'Founded GUTSY',
     description:
       'Wanted to experience the founder journey myself. Now I understand why sleep is optional and coffee is a food group.',
     pullQuote: 'Also why every decision feels existential.',
-    image: '/Lakshmi_personal_brandi...-063.jpg',
-    logo: '/Gutsy logomark copyright.jpg',
+    image: '/Gutsy-logomark.jpg',
+    logo: '/Gutsy-logomark.jpg',
     logoAlt: 'GUTSY',
   },
   {
