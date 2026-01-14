@@ -2,140 +2,151 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 
 const timelineData = [
   {
     year: '2013-2016',
-    title: 'Started as a Software Engineer',
+    title: 'Software Engineer',
     description:
-      'Built systems, wrote code, realized I cared more about the "why" than the "how". Also realized I\'m not patient enough to debug for 8 hours straight.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
+      'Built systems, wrote code, realized I cared more about the "why" than the "how".',
+    pullQuote: 'Also realized I\'m not patient enough to debug for 8 hours straight.',
+    image: '/Lakshmi_personal_brandi...-052.jpg',
+    logo: null,
+    logoAlt: null,
   },
   {
     year: '2017-2019',
-    title: 'Joined Deliveroo',
+    title: 'Deliveroo',
     description:
       'Dove into operations and strategy. Learned that scaling businesses is just like debugging, except with humans, and they don\'t come with error messages.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
+    pullQuote: null,
+    image: '/Lakshmi_personal_brandi...-047.jpg',
+    logo: '/deliveroo-logo.svg',
+    logoAlt: 'Deliveroo',
   },
   {
     year: '2020-2024',
-    title: 'Scaled with Talabat',
+    title: 'Talabat',
     description:
-      'Managed €100M+ budgets across 8 markets. Presented to C-suite. Orchestrated teams. Discovered I\'m good at translating vision into action (and that PowerPoint is a weapon).',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
+      'Managed €100M+ budgets across 8 markets. Presented to C-suite. Orchestrated teams.',
+    pullQuote: 'Discovered I\'m good at translating vision into action (and that PowerPoint is a weapon).',
+    image: '/Lakshmi_personal_brandi...-043.jpg',
+    logo: '/talabat-logo.svg',
+    logoAlt: 'Talabat',
   },
   {
     year: '2024-Present',
     title: 'Founded GUTSY',
     description:
-      'Wanted to experience the founder journey myself. Now I understand why sleep is optional and coffee is a food group. Also why every decision feels existential.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      </svg>
-    ),
+      'Wanted to experience the founder journey myself. Now I understand why sleep is optional and coffee is a food group.',
+    pullQuote: 'Also why every decision feels existential.',
+    image: '/Lakshmi_personal_brandi...-063.jpg',
+    logo: '/Gutsy logomark copyright.jpg',
+    logoAlt: 'GUTSY',
   },
   {
     year: '2025-Present',
     title: 'Building Current State',
     description:
-      'Because productivity apps assume we\'re robots. We\'re not. Some days are 10x days. Some days are survival mode. The system should adapt.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
+      'Because productivity apps assume we\'re robots. We\'re not. Some days are 10x days. Some days are survival mode.',
+    pullQuote: 'The system should adapt.',
+    image: '/Lakshmi_personal_brandi...-083.jpg',
+    logo: null,
+    logoAlt: null,
   },
 ]
 
 export default function Timeline() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
 
   return (
-    <section ref={ref} className="section-padding bg-white">
+    <section id="experience" ref={ref} className="section-padding bg-cream">
       <div className="container-editorial">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20"
+          className="mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-navy mb-4">
+          <div className="burgundy-line mb-6" />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-black mb-3">
             From Code to Strategy
           </h2>
-          <p className="text-lg text-charcoal/60 font-sans">(With Detours)</p>
+          <p className="text-lg text-black/50 font-body italic">(With Detours)</p>
         </motion.div>
 
-        {/* Timeline */}
+        {/* Timeline Cards */}
         <div className="relative">
-          {/* Vertical line - desktop */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-terracotta/30 -translate-x-1/2" />
+          {/* Connecting line */}
+          <div className="hidden lg:block absolute left-8 top-0 bottom-0 w-px bg-burgundy/20" />
 
-          {/* Vertical line - mobile */}
-          <div className="md:hidden absolute left-6 top-0 bottom-0 w-px bg-terracotta/30" />
-
-          <div className="space-y-12 md:space-y-0">
+          <div className="space-y-8 lg:space-y-12">
             {timelineData.map((item, index) => (
-              <motion.div
+              <motion.article
                 key={item.year}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className={`relative md:flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`relative grid lg:grid-cols-12 gap-6 lg:gap-10 items-center ${
+                  index % 2 === 0 ? '' : 'lg:direction-rtl'
                 }`}
               >
-                {/* Mobile icon */}
-                <div className="md:hidden absolute left-0 w-12 h-12 bg-navy text-cream rounded-full flex items-center justify-center z-10">
-                  {item.icon}
-                </div>
+                {/* Timeline dot */}
+                <div className="hidden lg:flex absolute left-8 -translate-x-1/2 w-4 h-4 bg-burgundy rounded-full z-10" />
 
-                {/* Desktop - Left/Right side content */}
+                {/* Image */}
                 <div
-                  className={`md:w-1/2 pl-20 md:pl-0 ${
-                    index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'
+                  className={`lg:col-span-5 ${
+                    index % 2 === 0 ? 'lg:col-start-2' : 'lg:col-start-8'
                   }`}
                 >
-                  <motion.div
-                    whileHover={{ x: index % 2 === 0 ? -5 : 5 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-cream/50 p-6 md:p-8 border border-navy/5 hover:border-terracotta/20 transition-colors duration-300"
-                  >
-                    <span className="inline-block text-terracotta font-sans text-sm font-semibold uppercase tracking-wider mb-2">
-                      {item.year}
-                    </span>
-                    <h3 className="text-xl md:text-2xl font-serif font-bold text-navy mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-charcoal/70 font-sans text-base leading-relaxed">
-                      {item.description}
+                  <div className="relative aspect-[4/3] img-zoom card-tilt">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover img-editorial"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                    {item.logo && (
+                      <div className="absolute top-4 right-4 bg-cream/90 backdrop-blur-sm p-2">
+                        <Image
+                          src={item.logo}
+                          alt={item.logoAlt || ''}
+                          width={60}
+                          height={24}
+                          className="h-6 w-auto object-contain opacity-70"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div
+                  className={`lg:col-span-5 ${
+                    index % 2 === 0 ? 'lg:col-start-7' : 'lg:col-start-2'
+                  }`}
+                >
+                  <span className="inline-block text-burgundy font-body text-sm font-semibold uppercase tracking-wider mb-3">
+                    {item.year}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-black/70 font-body text-base leading-relaxed mb-4">
+                    {item.description}
+                  </p>
+                  {item.pullQuote && (
+                    <p className="pull-quote text-lg">
+                      {item.pullQuote}
                     </p>
-                  </motion.div>
+                  )}
                 </div>
-
-                {/* Desktop center icon */}
-                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 bg-navy text-cream rounded-full items-center justify-center z-10 shadow-lg">
-                  {item.icon}
-                </div>
-
-                {/* Spacer for desktop */}
-                <div className="hidden md:block md:w-1/2" />
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>

@@ -1,37 +1,25 @@
 'use client'
 
-import { motion } from 'framer-motion'
-
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-navy text-cream py-12 px-6">
-      <div className="max-w-6xl mx-auto">
+    <footer className="bg-black text-cream py-10 px-6">
+      <div className="container-editorial">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center md:text-left"
-          >
+          <div className="text-center md:text-left">
             <p className="font-serif text-lg font-bold mb-1">Lakshmi Nair</p>
-            <p className="text-cream/50 font-sans text-sm">
+            <p className="text-cream/50 font-body text-sm">
               Building things that matter.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex gap-6"
-          >
+          <div className="flex gap-6">
             <a
               href="https://www.linkedin.com/in/lakshmicnair"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cream/60 hover:text-terracotta transition-colors duration-300"
+              className="text-cream/50 hover:text-burgundy transition-colors duration-300"
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -42,7 +30,7 @@ export default function Footer() {
               href="https://www.instagram.com/lakshmiirl"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cream/60 hover:text-terracotta transition-colors duration-300"
+              className="text-cream/50 hover:text-burgundy transition-colors duration-300"
               aria-label="Instagram"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -51,7 +39,7 @@ export default function Footer() {
             </a>
             <a
               href="mailto:lachunair@gmail.com"
-              className="text-cream/60 hover:text-terracotta transition-colors duration-300"
+              className="text-cream/50 hover:text-burgundy transition-colors duration-300"
               aria-label="Email"
             >
               <svg
@@ -68,11 +56,11 @@ export default function Footer() {
                 />
               </svg>
             </a>
-          </motion.div>
+          </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-cream/10 text-center">
-          <p className="text-cream/40 font-sans text-sm">
+        <div className="mt-8 pt-6 border-t border-cream/10 text-center">
+          <p className="text-cream/30 font-body text-sm">
             &copy; {currentYear} Lakshmi Nair. Built with chaos and coffee.
           </p>
         </div>
