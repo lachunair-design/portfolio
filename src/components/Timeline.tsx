@@ -11,7 +11,7 @@ const timelineData = [
     description:
       'Built systems, wrote code, realized I cared more about the "why" than the "how".',
     pullQuote: 'Also realized I\'m not patient enough to debug for 8 hours straight.',
-    image: '/Lakshmi_personal_brandi...-052.jpg',
+    image: '/software-engineer.jpg',
     logo: null,
     logoAlt: null,
   },
@@ -21,8 +21,8 @@ const timelineData = [
     description:
       'Dove into operations and strategy. Learned that scaling businesses is just like debugging, except with humans, and they don\'t come with error messages.',
     pullQuote: null,
-    image: '/deliveroo-logo.png',
-    logo: '/deliveroo-logo.svg',
+    image: null
+    logo: '/deliveroo-logo.png',
     logoAlt: 'Deliveroo',
   },
   {
@@ -31,8 +31,8 @@ const timelineData = [
     description:
       'Managed €100M+ budgets across 8 markets. Presented to C-suite. Orchestrated teams.',
     pullQuote: 'Discovered I\'m good at translating vision into action (and that PowerPoint is a weapon).',
-    image: '/talabat-logo.png',
-    logo: '/talabat-logo.svg',
+    image: null
+    logo: '/talabat-logo.png',
     logoAlt: 'Talabat',
   },
   {
@@ -41,7 +41,7 @@ const timelineData = [
     description:
       'Wanted to experience the founder journey myself. Now I understand why sleep is optional and coffee is a food group.',
     pullQuote: 'Also why every decision feels existential.',
-    image: '/Gutsy-logomark.jpg',
+    image: null
     logo: '/Gutsy-logomark.jpg',
     logoAlt: 'GUTSY',
   },
@@ -51,8 +51,8 @@ const timelineData = [
     description:
       'Because productivity apps assume we\'re robots. We\'re not. Some days are 10x days. Some days are survival mode.',
     pullQuote: 'The system should adapt.',
-    image: '/Lakshmi_personal_brandi...-083.jpg',
-    logo: null,
+    image: null
+    logo: '/Current_State.jpg',
     logoAlt: null,
   },
 ]
