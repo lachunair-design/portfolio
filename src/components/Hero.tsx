@@ -69,13 +69,11 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-lg md:text-xl text-black/80 mb-10 leading-relaxed font-body max-w-xl"
               >
-                Started as a software engineer, discovered I cared more about the
-                "why" than the "how". Scaled operations at Talabat across 8
-                markets. Now building{' '}
+               Internet-dweller geeking out about AI. Now building{' '}
                 <span className="text-burgundy font-semibold">GUTSY</span> (gut
                 health) and{' '}
                 <span className="text-burgundy font-semibold">Current State</span>{' '}
-                (realistic productivity). Welcome to the chaos.
+                to solve real world problems. Welcome to the chaos.
               </motion.p>
 
               <motion.div
