@@ -20,14 +20,22 @@ export default function Connect() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (formData._gotcha) return
+    setFormStatus('submitting')
+    if (formData._gotcha) { setFormStatus('success'); return }
 
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`)
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)
-    window.location.href = `mailto:lachunair@gmail.com?subject=${subject}&body=${body}`
-    setFormStatus('success')
+    try {
+      const response = await fetch('https://formspree.io/f/mbddlonq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
+      })
+      if (response.ok) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', message: '', _gotcha: '' })
+      } else { setFormStatus('error') }
+    } catch { setFormStatus('error') }
   }
 
   return (
@@ -124,10 +132,15 @@ export default function Connect() {
 
                 <button
                   type="submit"
-                  className="w-full bg-black text-cream py-6 font-serif font-black text-2xl hover:bg-burgundy transition-all duration-500"
+                  disabled={formStatus === 'submitting'}
+                  className="w-full bg-black text-cream py-6 font-serif font-black text-2xl hover:bg-burgundy transition-all duration-500 disabled:opacity-50"
                 >
-                  Dispatch Message
+                  {formStatus === 'submitting' ? 'Dispatching...' : 'Dispatch Message'}
                 </button>
+
+                {formStatus === 'error' && (
+                  <p className="text-burgundy font-serif italic text-sm">Something went wrong. Please try again.</p>
+                )}
               </form>
             )}
           </motion.div>
