@@ -20,22 +20,14 @@ export default function Connect() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setFormStatus('submitting')
-    if (formData._gotcha) { setFormStatus('success'); return }
+    if (formData._gotcha) return
 
-    try {
-      const response = await fetch('https://formspree.io/f/xpwzgvqa', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
-      })
-      if (response.ok) {
-        setFormStatus('success')
-        setFormData({ name: '', email: '', message: '', _gotcha: '' })
-      } else { setFormStatus('error') }
-    } catch { setFormStatus('error') }
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`)
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)
+    window.location.href = `mailto:lachunair@gmail.com?subject=${subject}&body=${body}`
+    setFormStatus('success')
   }
 
   return (
@@ -132,15 +124,10 @@ export default function Connect() {
 
                 <button
                   type="submit"
-                  disabled={formStatus === 'submitting'}
-                  className="w-full bg-black text-cream py-6 font-serif font-black text-2xl hover:bg-burgundy transition-all duration-500 disabled:opacity-50"
+                  className="w-full bg-black text-cream py-6 font-serif font-black text-2xl hover:bg-burgundy transition-all duration-500"
                 >
-                  {formStatus === 'submitting' ? 'Dispatching...' : 'Dispatch Message'}
+                  Dispatch Message
                 </button>
-                
-                {formStatus === 'error' && (
-                  <p className="text-burgundy font-serif italic text-sm">Error in the system. Try emailing directly.</p>
-                )}
               </form>
             )}
           </motion.div>
