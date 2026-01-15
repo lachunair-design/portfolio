@@ -26,7 +26,7 @@ export default function Connect() {
     if (formData._gotcha) { setFormStatus('success'); return }
 
     try {
-      const response = await fetch('https://formspree.io/f/xpwzgvqa', {
+      const response = await fetch('https://formspree.io/f/mbddlonq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
@@ -137,9 +137,9 @@ export default function Connect() {
                 >
                   {formStatus === 'submitting' ? 'Dispatching...' : 'Dispatch Message'}
                 </button>
-                
+
                 {formStatus === 'error' && (
-                  <p className="text-burgundy font-serif italic text-sm">Error in the system. Try emailing directly.</p>
+                  <p className="text-burgundy font-serif italic text-sm">Something went wrong. Please try again.</p>
                 )}
               </form>
             )}
