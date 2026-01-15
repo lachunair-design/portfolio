@@ -1,7 +1,8 @@
 {
   "name": "lakshmi-portfolio",
   "version": "1.0.0",
-  "description": "Lakshmi Nair Portfolio Website",
+  "description": "Lakshmi Nair - Builder & Founder Portfolio",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +13,6 @@
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "canvas-confetti": "^1.9.2",
     "framer-motion": "^10.16.4"
   },
   "devDependencies": {

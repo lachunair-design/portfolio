@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background-color: #FFFEF2;
+  color: #000000;
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+/* New Yorker Editorial Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #000000;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-family: 'Lora', Georgia, serif;
+  line-height: 1.75;
+}
+
+/* Custom scrollbar - Editorial */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFEF2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B1538;
+}
+
+/* Focus states for accessibility */
+:focus-visible {
+  outline: 2px solid #8B1538;
+  outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+  background-color: #8B1538;
+  color: #FFFEF2;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Editorial link underline effect */
+.editorial-link {
+  position: relative;
+  text-decoration: none;
+  color: #000000;
+}
+
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #8B1538;
+  transition: width 0.3s ease-out;
+}
+
+.editorial-link:hover::after {
+  width: 100%;
+}
+
+/* Button styles - Editorial */
+.btn-primary {
+  display: inline-block;
+  background-color: #000000;
+  color: #FFFEF2;
+  padding: 14px 32px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.btn-primary:hover {
+  background-color: #8B1538;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: #000000;
+  padding: 12px 30px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1.5px solid #000000;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.btn-secondary:hover {
+  border-color: #8B1538;
+  color: #8B1538;
+  transform: translateY(-2px);
+}
+
+/* Section padding - tighter, editorial */
+.section-padding {
+  padding: 80px 24px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 100px 48px;
+  }
+}
+
+/* Container */
+.container-editorial {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Image editorial treatment */
+.img-editorial {
+  filter: contrast(1.05) saturate(0.85);
+}
+
+/* Card tilt effect */
+.card-tilt {
+  transition: transform 0.4s ease-out;
+}
+
+.card-tilt:hover {
+  transform: perspective(1000px) rotateY(2deg) rotateX(1deg) translateY(-4px);
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.5s ease-out;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Burgundy accent line */
+.burgundy-line {
+  width: 60px;
+  height: 3px;
+  background-color: #8B1538;
+}
+
+/* Pull quote styling */
+.pull-quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #8B1538;
+  border-left: 3px solid #8B1538;
+  padding-left: 20px;
+  margin: 24px 0;
+}
+
+/* Fade up animation class */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
