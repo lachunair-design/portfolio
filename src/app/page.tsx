@@ -12,7 +12,7 @@ import ExperienceModal from '@/components/ExperienceModal'
 import Connect from '@/components/Connect'
 import Footer from '@/components/Footer'
 
-// Register the ScrollTrigger plugin
+// Register ScrollTrigger only on the client side
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -20,39 +20,69 @@ if (typeof window !== 'undefined') {
 export default function Home() {
   
   useEffect(() => {
-    // This selects your sections and creates a smooth "fade up" as you scroll
-    const sections = document.querySelectorAll('section');
-
-    sections.forEach((section) => {
-      gsap.fromTo(section, 
-        { 
-          opacity: 0, 
-          y: 20 
-        }, 
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%", // Starts when the section is 85% down the screen
-            toggleActions: "play none none none"
-          }
-        }
-      );
+    // 1. Hero Animation (Fades in immediately on load)
+    gsap.from("#hero-section", {
+      opacity: 0,
+      y: 30,
+      duration: 1.2,
+      ease: "power3.out"
     });
+
+    // 2. Scroll Animations for all other sections
+    const scrollSections = [
+      "#building-section", 
+      "#timeline-section", 
+      "#connect-section", 
+      "#footer-section"
+    ];
+
+    scrollSections.forEach((id) => {
+      gsap.from(id, {
+        scrollTrigger: {
+          trigger: id,
+          start: "top 85%", // Animation starts when section is 85% down the screen
+          toggleActions: "play none none none",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power2.out"
+      });
+    });
+
+    // Clean up on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
   }, []);
 
   return (
     <main className="min-h-screen">
       <Navigation />
-      <Hero />
-      <Building />
-      <Timeline />
+      
+      {/* We wrap each component in a div with an ID for GSAP to target */}
+      <div id="hero-section">
+        <Hero />
+      </div>
+
+      <div id="building-section">
+        <Building />
+      </div>
+
+      <div id="timeline-section">
+        <Timeline />
+      </div>
+
+      {/* ExperienceModal usually doesn't need a scroll animation as it's a popup */}
       <ExperienceModal />
-      <Connect />
-      <Footer />
+
+      <div id="connect-section">
+        <Connect />
+      </div>
+
+      <div id="footer-section">
+        <Footer />
+      </div>
     </main>
   )
 }
