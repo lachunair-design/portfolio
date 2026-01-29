@@ -159,7 +159,7 @@ export default function Building() {
               
               <div className="max-w-xl space-y-6 font-body text-lg text-cream/70 leading-relaxed">
                 <p>Most productivity systems assume we’re robots. We aren't.</p>
-                <p>Current State is a framework for the neurodivergent and the multi-hyphenate that swaps rigid calendars for energy-based logic. It adapts to your daily capacity instead of fighting it. Welcome to the chaos of actual human output.</p>
+                <p>Current State is a framework for the multi-hyphenate that swaps rigid calendars for energy-based logic. It adapts to your daily capacity instead of fighting it. Welcome to the chaos of actual human output.</p>
               </div>
             </div>
 
