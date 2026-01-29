@@ -51,7 +51,7 @@ export default function Connect() {
           >
             <span className="text-burgundy font-serif italic text-xl mb-4 block">Correspondence</span>
             <h2 className="text-5xl md:text-6xl font-serif font-bold tracking-tighter text-black mb-8">
-              Let's build <br />something.
+              Always open  <br />to a new project.
             </h2>
             <div className="space-y-6 text-black/60 font-body text-lg leading-relaxed">
               <p>
@@ -59,8 +59,8 @@ export default function Connect() {
                 refining <span className="text-black font-bold">Current State</span>.
               </p>
               <p>
-                I help founders with strategic operations and geek out on AI implementation. 
-                If you have a project that requires both logic and chaos, reach out.
+                I love collaborating on work that requires both strategic logic and creative chaos.
+                If you have an interesting problem to solve or a system to build, reach out.
               </p>
             </div>
 
