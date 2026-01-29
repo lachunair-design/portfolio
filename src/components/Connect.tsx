@@ -66,7 +66,7 @@ export default function Connect() {
 
             {/* Asymmetrical Social Links */}
             <div className="mt-12 flex flex-col gap-4 border-t border-black/5 pt-8">
-               <a href="https://www.linkedin.com/in/lakshmicnair" className="font-serif font-bold text-lg hover:text-burgundy transition-colors flex justify-between w-full max-w-xs border-b border-black/5 pb-2">
+               <a href="https://www.linkedin.com/in/tlakshminair/" className="font-serif font-bold text-lg hover:text-burgundy transition-colors flex justify-between w-full max-w-xs border-b border-black/5 pb-2">
                  LinkedIn <span>→</span>
                </a>
                <a href="mailto:lachunair@gmail.com" className="font-serif font-bold text-lg hover:text-burgundy transition-colors flex justify-between w-full max-w-xs">
