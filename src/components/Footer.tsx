@@ -25,7 +25,7 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-8">
               <div className="flex flex-col gap-2">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-cream/30 font-bold">Connect</span>
-                <a href="https://www.linkedin.com/in/lakshmicnair" className="font-serif hover:text-burgundy transition-colors">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/tlakshminair/" className="font-serif hover:text-burgundy transition-colors">LinkedIn</a>
                 <a href="https://www.instagram.com/lakshmiirl" className="font-serif hover:text-burgundy transition-colors">Instagram</a>
                 <a href="mailto:lachunair@gmail.com" className="font-serif hover:text-burgundy transition-colors">Email</a>
               </div>
